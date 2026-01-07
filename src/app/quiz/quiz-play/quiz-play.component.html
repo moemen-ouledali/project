@@ -1,1 +1,14 @@
-<p>quiz-play works!</p>
+<div *ngIf="quiz">
+  <h2>Quiz : {{ quiz.quizTitle }}</h2>
+
+  <div *ngFor="let q of quiz.questions; let i = index">
+    <h3>{{ i + 1 }}. {{ q.question }}</h3>
+
+    <div *ngFor="let a of q.answers">
+      <label>
+        <input type="checkbox">
+        {{ a.text }}
+      </label>
+    </div>
+  </div>
+</div>

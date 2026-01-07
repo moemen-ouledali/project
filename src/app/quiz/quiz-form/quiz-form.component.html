@@ -1,1 +1,51 @@
-<p>quiz-form works!</p>
+<h2>veuillez choisir un titre a votre quiz:</h2>
+
+<form [formGroup]="form">
+  <div>
+    <label>Titre:</label>
+    <input type="text" formControlName="quizTitle">
+    <div *ngIf="form.get('quizTitle')?.touched && form.get('quizTitle')?.invalid">
+      le titre du quiz est oblig
+    </div>
+  </div>
+
+  <div>
+    <label>question :</label>
+    <input type="text" formControlName="question">
+
+    <div *ngIf="form.get('question')?.touched && form.get('question')?.errors?.['required']">
+      question obligatoire
+    </div>
+
+    <div *ngIf="form.get('question')?.touched && form.get('question')?.errors?.['minlength']">
+      question obligatoire et min 10 caractéres
+    </div>
+
+    <div *ngIf="form.get('question')?.touched && form.get('question')?.errors?.['pattern']">
+      une question doit se terminer par un "?"
+    </div>
+  </div>
+
+  <h3>réponses :</h3>
+
+  <div formArrayName="answers">
+    <div *ngFor="let a of answers.controls; let i = index" [formGroupName]="i">
+      <input type="text" formControlName="text">
+      <input type="checkbox" formControlName="isCorrect"> Bonne réponse
+
+      <div *ngIf="a.get('text')?.touched && a.get('text')?.invalid">
+        chaque réponse est oblig
+      </div>
+    </div>
+  </div>
+
+  <button type="button">Ajoutez une réponse</button>
+
+  <button type="button" [disabled]="form.invalid">
+    Valider la question
+  </button>
+
+  <button type="button">
+    Terminez le quiz
+  </button>
+</form>

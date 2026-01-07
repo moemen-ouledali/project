@@ -9,6 +9,8 @@
     <strong appHighlighTitle>
       {{ quiz.quizTitle | uppercase }}
     </strong>
-    "tentez votre chance"
+    <button [routerLink]="['/quiz/play', quiz.id]">
+      tentez votre chance
+    </button>
   </div>
 </div>
