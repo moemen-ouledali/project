@@ -1,0 +1,14 @@
+<h2>Bienvenu dans notre plateforme de quiz:</h2>
+
+<div *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="!errorMessage">
+  <div *ngFor="let quiz of quizs">
+    <strong appHighlighTitle>
+      {{ quiz.quizTitle | uppercase }}
+    </strong>
+    "tentez votre chance"
+  </div>
+</div>
