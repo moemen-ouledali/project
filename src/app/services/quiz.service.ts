@@ -13,4 +13,8 @@ export class QuizService {
   getQuizs() {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  addQuiz(quiz: any) {
+    return this.http.post(this.apiUrl, quiz);
+  }
 }

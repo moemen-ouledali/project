@@ -41,11 +41,11 @@
 
   <button type="button">Ajoutez une réponse</button>
 
-  <button type="button" [disabled]="form.invalid">
+  <button type="button" (click)="validateQuestion()" [disabled]="form.invalid">
     Valider la question
   </button>
 
-  <button type="button">
+  <button type="button" (click)="finishQuiz()" [disabled]="!canFinishQuiz()">
     Terminez le quiz
   </button>
 </form>
